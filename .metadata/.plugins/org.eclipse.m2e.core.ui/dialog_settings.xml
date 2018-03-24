@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.gem"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="1"/>
+			<item value="mvn-projecte"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+		</list>
+		<list key="issueManagementUrl">
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\Downloads\spring-boot"/>
+			<item value="D:\Downloads\sboot-ss-project"/>
+			<item value="D:\Downloads\sboot-ssm-project"/>
+			<item value="D:\Downloads\sboot-pro-ssm"/>
+			<item value="E:\sboot-s"/>
+			<item value="C:\Users\Administrator\Desktop\file\proclz\sboot-ssm"/>
+			<item value="E:\Java\mvwork\mvn-ssm"/>
+			<item value="E:\Java\mvwork\mvn-project"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenModuleWizardParentPage">
+		<list key="moduleName">
+			<item value="1"/>
+			<item value="mvn-project-web"/>
+			<item value="mvn-project-service"/>
+			<item value="mvn-project-util"/>
+			<item value="mvn-project-dao"/>
+			<item value="mvn-project-model"/>
+			<item value="mvn-project-utils"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="E:\Java\mvwork\mybatis_1"/>
+			<item value="E:\Java\mvwork\mall"/>
+			<item value="E:\Java\mvwork\shopping_mall"/>
+			<item value="E:\Java\mvwork\demo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="org.asxaxs"/>
+			<item value="org.mvn.project.web"/>
+			<item value="org.mvn.project.service"/>
+			<item value="org.mvn.project.util"/>
+			<item value="org.mvn.project.dao"/>
+			<item value="org.mvn.project.model"/>
+		</list>
+		<list key="groupId">
+			<item value="com.gem"/>
+		</list>
+		<list key="artifactId">
+			<item value="1"/>
+			<item value="mvn-project-web"/>
+			<item value="mvn-project-service"/>
+			<item value="mvn-project-util"/>
+			<item value="mvn-project-dao"/>
+			<item value="mvn-project-model"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

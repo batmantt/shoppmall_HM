@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.gem.utils.FileCopyUtil"/>
+<fullyQualifiedTypeName name="org.gem.model.Role"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.type.TypeHandler"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.type.JdbcType"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="com.gb.dao.AdminMapper"/>
+<fullyQualifiedTypeName name="com.gb.model.Admin"/>
+<fullyQualifiedTypeName name="com.gb.utils.ToolUtil"/>
+<fullyQualifiedTypeName name="com.gb.model.OrderSub"/>
+<fullyQualifiedTypeName name="com.gb.dao.UserAddressMapper"/>
+<fullyQualifiedTypeName name="com.gb.model.UserAddress"/>
+<fullyQualifiedTypeName name="com.gb.service.UserAddressService"/>
+<fullyQualifiedTypeName name="com.gb.model.Order"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+</qualifiedTypeNameHistroy>

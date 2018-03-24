@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.dao.UserAddressMapper">
+
+	<resultMap type="ua" id="useraddressmapper">
+		<id column="addressId" property="address_id" />
+		<result column="user_id" property="userId" />
+
+		<result column="receiver_name" property="receiverName" />
+		<result column="receiver_phone" property="receiverPhone" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="area" property="area" />
+		<result column="street" property="street" />
+		<result column="detailed_address" property="detailedAddress" />
+		<result column="zip_code" property="zipCode" />
+		<result column="default_status" property="defaultStatus" />
+	</resultMap>
+	<sql id="addrInfo">
+		receiver_name,receiver_phone,province,city,area,street,detailed_address,zip_code,default_status
+	</sql>
+	<insert id="insertAddress" parameterType="ua">
+		insert into
+		user_address(user_id,receiver_name,receiver_phone,province,city,area,street,detailed_address,zip_code,default_status)
+		values(#{userId},#{receiverName},#{receiverPhone},#{province},#{city},#{area},#{street},#{detailedAddress},#{zipCode},#{defaultStatus})
+	</insert>
+	<update id="updateAddressById" parameterType="int">
+		update user_address
+		<set>
+			<if test="receiverName !=null and receiverName !=''">
+				receiver_name=#{receiverName},
+			</if>
+			<if test="receiverPhone !=null and receiverPhone !=''">
+				receiver_phone=#{receiverPhone},
+			</if>
+			<if test="province !=null and province !=''">
+				province=#{province},
+			</if>
+			<if test="city !=null and city !=''">
+				city=#{city},
+			</if>
+			<if test="area !=null and area !=''">
+				area=#{area},
+			</if>
+			<if test="street !=null and street !=''">
+				street=#{street},
+			</if>
+			<if test="detailedAddress !=null and detailedAddress !=''">
+				detailed_address=#{detailedAddress},
+			</if>
+			<if test="zipCode !=null and zipCode !=''">
+				zip_code=#{zipCode},
+			</if>
+		</set>
+		where address_id=#{addressId}
+	</update>
+	<update id="setDefaultAddress" parameterType="int">
+		update user_address
+		set default_status=1 where addressId=#{addressId}
+	</update>
+	<update id="setUndefault" parameterType="int">
+		update user_address set
+		default_status=0 where address_id!=#{addressId}
+	</update>
+	<delete id="deleteAddressById" parameterType="int">
+		delete from
+		user_address where address_id=#{addressId}
+	</delete>
+	<select id="selectAddressCount" parameterType="int" resultType="int">
+		select count(*)
+		from user_address where user_id=#{userId}
+	</select>
+	<select id="findAddressByAddressId" parameterType="int"
+		resultMap="useraddressmapper">
+		select
+		<include refid="addrInfo"></include>
+		from user_address where address_id=#{addressId}
+	</select>
+	<select id="findAddressByUserId" parameterType="int"
+		resultMap="useraddressmapper">
+		select
+		<include refid="addrInfo"></include>
+		from user_address where user_id=#{userId}
+	</select>
+	<select id="findDefaultAddress" parameterType="int"
+		resultMap="useraddressmapper">
+		select
+		<include refid="addrInfo"></include>
+		from user_address where user_id=#{userId} and default_status=1
+	</select>
+</mapper>

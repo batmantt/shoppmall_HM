@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.dao.OrderSubMapper">
+	<resultMap type="os" id="orderSubMapper">
+		<id column="id" property="id" />
+		<result column="order_id" property="orderId" />
+		<result column="good_id" property="goodId" />
+		<result column="good_name" property="goodName" />
+		<result column="good_color" property="goodColor" />
+		<result column="good_count" property="goodCount" />
+		<result column="price" property="price" />
+		<result column="good_status" property="goodStatus" />
+		<result column="photo" property="photo" />
+	</resultMap>
+	<sql id="orsub">good_name,good_color,good_count,price,good_status,photo
+	</sql>
+	<insert id="insertOrderSub" parameterType="list">
+		insert into
+		order_sub(order_id,good_id,good_name,good_color,good_count,price,photo
+		<if test="goodStatus!=null and goodStatus!=''">
+			,good_status
+		</if>
+		)
+		values(
+		<foreach collection="list" index="i" item="val" open="(" separator="," close=")"> 
+		#val
+		</foreach>)
+		<!-- order_id=#{orderId},good_id=#{goodId},good_name=#{goodName},good_color=#{goodColor},good_count=#{goodCount},price=#{price},photo=#{photo}
+		<if test="goodStatus!=null and goodStatus!=''">
+			,good_status=#{goodStatus}
+		</if> -->
+		
+	</insert>
+	<update id="updateGoodStatus" parameterType="int">
+		update order_sub set
+		good_status=#{goodStatus} where good_id=#{goodId}
+	</update>
+	<select id="findOrderSub" parameterType="int">
+		select
+		<include refid="orsub"></include>
+		from order_sub where good_id=#{goodId}
+	</select>
+	<select id="findOrderSubList" parameterType="int" resultMap="orderSubMapper">
+		select
+		<include refid="orsub"></include>
+		from order_sub where order_id=#{orderId}
+	</select>
+</mapper>

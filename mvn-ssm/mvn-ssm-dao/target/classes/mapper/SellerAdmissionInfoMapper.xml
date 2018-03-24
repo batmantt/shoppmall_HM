@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gb.dao.SellerAdmissionInfoMapper">
+
+	<resultMap type="sai" id="BaseResultMap">
+		<id column="seller_id" property="sellerId" jdbcType="INTEGER" />
+		<result column="contacts_name" property="contactsName"
+			jdbcType="VARCHAR" />
+		<result column="contacts_tel" property="contactsTel" jdbcType="VARCHAR" />
+		<result column="contacts_email" property="contactsEmail"
+			jdbcType="VARCHAR" />
+		<result column="corporate_name" property="corporateName"
+			jdbcType="VARCHAR" />
+		<result column="bus_lic_reg_num" property="busLicRegNum"
+			jdbcType="VARCHAR" />
+		<result column="legal_rep_name" property="legalRepName"
+			jdbcType="VARCHAR" />
+		<result column="id_card_number" property="idCardNumber"
+			jdbcType="INTEGER" />
+		<result column="legal_rep_idcard_picture" property="legalRepIdcardPicture"
+			jdbcType="VARCHAR" />
+		<result column="bus_lic_loc" property="busLicLoc" jdbcType="VARCHAR" />
+		<result column="bus_lic_det_loc" property="busLicDetLoc"
+			jdbcType="VARCHAR" />
+		<result column="est_date" property="estDate" jdbcType="TIMESTAMP" />
+		<result column="bus_term" property="busTerm" jdbcType="DATE" />
+		<result column="reg_capital" property="regCapital" jdbcType="INTEGER" />
+		<result column="bus_scope" property="busScope" jdbcType="VARCHAR" />
+		<result column="bus_lic_upload" property="busLicUpload"
+			jdbcType="VARCHAR" />
+		<result column="com_loc" property="comLoc" jdbcType="VARCHAR" />
+		<result column="com_det_loc" property="comDetLoc" jdbcType="VARCHAR" />
+		<result column="com_tel" property="comTel" jdbcType="VARCHAR" />
+		<result column="com_em_contact" property="comEmContact"
+			jdbcType="VARCHAR" />
+		<result column="com_em_contact_tel" property="comEmContactTel"
+			jdbcType="VARCHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="org_code_upload" property="orgCodeUpload"
+			jdbcType="VARCHAR" />
+		<result column="taxpayer_num" property="taxpayerNum" jdbcType="INTEGER" />
+		<result column="taxpayer_type" property="taxpayerType"
+			jdbcType="VARCHAR" />
+		<result column="tax _type_tax_code" property="taxTypeTaxCode"
+			jdbcType="INTEGER" />
+		<result column="tax_reg_cert_update" property="taxRegCertUpdate"
+			jdbcType="VARCHAR" />
+		<result column="gen_tax_qua_cert_update" property="genTaxQuaCertUpdate"
+			jdbcType="VARCHAR" />
+		<result column="bank_account_name" property="bankAccountName"
+			jdbcType="VARCHAR" />
+		<result column="com_bank_acc" property="comBankAcc" jdbcType="VARCHAR" />
+		<result column="op_bank_bra_name" property="opBankBraName"
+			jdbcType="VARCHAR" />
+		<result column="op_bank_bra_number" property="opBankBraNumber"
+			jdbcType="INTEGER" />
+		<result column="op_bank_bra_location" property="opBankBraLocation"
+			jdbcType="VARCHAR" />
+		<result column="op_bank_ac_per_cert_update" property="opBankAcPerCertUpdate"
+			jdbcType="VARCHAR" />
+		<result column="com_type" property="comType" jdbcType="VARCHAR" />
+		<result column="com_website" property="comWebsite" jdbcType="VARCHAR" />
+		<result column="annual_sales" property="annualSales" jdbcType="VARCHAR" />
+		<result column="shop_operators_num" property="shopOperatorsNum"
+			jdbcType="INTEGER" />
+		<result column="warehouse_address" property="warehouseAddress"
+			jdbcType="VARCHAR" />
+		<result column="common_logistics_companies" property="commonLogisticsCompanies"
+			jdbcType="VARCHAR" />
+		<result column="erp_type" property="erpType" jdbcType="VARCHAR" />
+		<result column="generation_operation_com" property="generationOperationCom"
+			jdbcType="VARCHAR" />
+		<result column="desired_store_type" property="desiredStoreType"
+			jdbcType="VARCHAR" />
+		<result column="major_business_type" property="majorBusinessType"
+			jdbcType="VARCHAR" />
+		<result column="detailed_categories" property="detailedCategories"
+			jdbcType="VARCHAR" />
+		<result column="industry_qualification_update" property="industryQualificationUpdate"
+			jdbcType="VARCHAR" />
+		<result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+		<result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
+		<result column="Timestamp" property="timestamp" jdbcType="TIMESTAMP" />
+		<result column="note" property="note" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 修改审核状态 -->
+	<update id="changeAuditState" parameterType="sai">
+		update seller_admission_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="auditStatus!=null and auditStatus!=''">
+				audit_status=#{auditStatus},
+			</if>
+			<if test="note!=null and note!=''">
+				note=#{note},
+			</if>
+		</trim>
+		where seller_id=#{sellerId}
+	</update>
+
+	<!-- 查找所有申请入驻的商家id -->
+	<select id="findSellerAdmission" resultMap="BaseResultMap">
+		select seller_id from
+		seller_admission_info
+	</select>
+
+	<!-- 查找某个商家的具体申请入驻信息 -->
+	<select id="findAllInfo" resultMap="BaseResultMap">
+		select * from
+		seller_admission_info
+		where seller_id=#{sellerId}
+	</select>
+
+	<!-- 查找已入驻商家 -->
+	<select id="findSuccessSettled" resultMap="BaseResultMap">
+		select * from
+		seller_admission_info
+		where audit_status=3
+	</select>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1513835989452_1" label="mvn-projecte" name="mvn-projecte"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1513836075796_2" label="mvn-ssm" name="mvn-ssm">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm-utils" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm-model" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm-web" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/mvn-ssm-dao" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1513653965128_0" label="Window Working Set" name="Aggregate for window 1513653965128"/>
+</workingSetManager>

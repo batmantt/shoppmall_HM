@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gb.dao.GoodEvaluateMapper">
+
+	<resultMap type="gep" id="goodevaluatemapper">
+
+		<id property="id" column="id" />
+		<result property="orderId" column="order_id" />
+		<result property="userId" column="user_id" />
+		<result property="goodId" column="good_id" />
+		<result property="userContent" column="user_content" />
+		<result property="sellerReply" column="seller_reply" />
+		<result property="starSeller" column="star_seller" />
+		<result property="starGood" column="star_good" />
+		<result property="starExp" column="star_exp" />
+		<result property="pictureUrl" column="pictureurl" />
+		<result property="anonymous" column="anonymous" />
+		<result property="useful" column="useful" />
+		<result property="resourceTime" column="resourceTime" />
+
+
+	</resultMap>
+
+	<select id="findGoodEvaluate" resultMap="goodevaluatemapper">
+		select *
+		from
+		good_evaluate where
+		good_id=#{goodId}
+	</select>
+
+	<insert id="addGoodEvaluate" parameterType="gep"
+		useGeneratedKeys="true" keyProperty="id">
+
+		INSERT into
+		good_evaluate
+		(order_id,
+		user_id,
+		good_id,
+		user_content,
+		seller_reply,
+		star_seller,
+		star_good,
+		star_exp,
+		pictureurl,
+		anonymous,
+		useful,
+		resourceTime)
+		VALUES
+		(#{orderId},
+		#{userId},
+		#{goodId},
+		#{userContent},
+		#{sellerReply},
+		#{starSeller},
+		#{starGood},
+		#{starExp},
+		#{pictureUrl},
+		#{anonymous},
+		#{useful},
+		#{resourceTime})
+	</insert>
+
+	<delete id="deleteGoodEvaluate" parameterType="int">
+		delete from
+		good_evaluate where good_id=#{goodId} and user_id=#{userId}
+	</delete>
+
+	<!-- <update id="updateGoodEvaluateById" parameterType="gep"> update good_evaluate 
+		<trim prefix="set" suffixOverrides=","> <if test="orderId!=null and orderId!=''"> 
+		order_id=#{orderId}, </if> <if test="goodId!=null and goodId!=''"> good_id=#{goodId} 
+		</if> <if test="userContent!=null and userContent!=''"> user_content=#{userContent}, 
+		</if> <if test="sellerReply!=null and sellerReply!=''"> seller_reply=#{sellerReply}, 
+		</if> <if test="picture!=null and picture!=''"> pictureurl=#{pictureUrl}, 
+		</if> <if test="star!=null and star!=''"> star=#{star}, </if> </trim> where 
+		good_id=#{goodId} </update> -->
+</mapper>

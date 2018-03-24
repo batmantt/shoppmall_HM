@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;com.gb.sbootssm.controller&apos; to &apos;spring-boot/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;sboot-ssm&apos;&#x0D;&#x0A;- Destination element: &apos;spring-boot/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;sboot-ssm/src/main/java/com.gb.sbootssm.controller&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=spring-boot/src\/main\/java" element1="/src\/main\/java&lt;com.gb.sbootssm.controller" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1514099597881" version="1.0"/>
+</session>

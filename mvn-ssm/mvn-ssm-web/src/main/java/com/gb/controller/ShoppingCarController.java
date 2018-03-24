@@ -1,0 +1,140 @@
+package com.gb.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gb.constant.ConstantData;
+import com.gb.model.Goods;
+import com.gb.model.ShoppingCart;
+import com.gb.service.ShoppingCartService;
+
+@Controller
+@RequestMapping(value = "user")
+public class ShoppingCarController {
+	@Autowired
+	private ShoppingCartService shoppingCartService;
+	@Autowired
+	private UserAddressController userAddressController;
+
+	/*
+	 * @Autowired private InventoryController inventoryController;
+	 */
+	// 往购物车添加商品
+	@RequestMapping(value = "addGood", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> addGoods(ShoppingCart shoppingcart) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		int value = shoppingCartService.addGood(shoppingcart);
+		if (value > 0) {
+			// inventoryController.modifyStock(shoppingcart.getGoodId(),
+			// shoppingcart.getQuantity());
+			map.put("resultCode", ConstantData.STATUS_CODE_1);
+		} else {
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+		return map;
+
+	}
+
+	// 删除购物车商品
+	@RequestMapping(value = "removeGood", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> removeGood(Integer goodId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		int value = shoppingCartService.removeGood(goodId);
+		if (value > 0) {
+			map.put("resultCode", ConstantData.STATUS_CODE_1);
+		} else {
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+		return map;
+
+	}
+
+	// 生成订单时，将商品从购物车删除
+	@RequestMapping(value = "removeAllGoods", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> removeAllGoods(Integer userId, List<Integer> goodId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		int value = shoppingCartService.removeAllGoodsByUserId(userId, goodId);
+		if (value > 0) {
+			map.put("resultCode", ConstantData.STATUS_CODE_1);
+		} else {
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+		return map;
+
+	}
+
+	// 修改购物车商品数量
+	@RequestMapping(value = "modifyCount", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> modifyGoodCount(ShoppingCart shoppingcart) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		int value = shoppingCartService.updateGoodCount(shoppingcart);
+		if (value > 0) {
+			map.put("resultCode", ConstantData.STATUS_CODE_1);
+		} else {
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+		return map;
+
+	}
+
+	// 显示购物车所有商品
+	@RequestMapping(value = "showAllGood", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> showAllGood(Integer userId) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<ShoppingCart> goods = shoppingCartService.findGoodsByUserId(userId);
+		if (goods != null) {
+			map.put("goodList", goods);
+		} else {
+
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+		return map;
+
+	}
+
+	// 填写订单
+	@RequestMapping(value = "calculateTotal")
+	@ResponseBody
+	public Map<String, Object> calculateTotal(Integer userId, List<Integer> goodId) {
+		double total = 0;
+		Map<String, Object> map = new HashMap<String, Object>();
+		// 返回用户的默认地址作为订单收货地址
+		userAddressController.showDefaultAddress(userId);
+		// 从购物车中获取选中的商品信息
+		List<ShoppingCart> shopGoods = shoppingCartService.findGoodsByGoodId(userId, goodId);
+		if (shopGoods != null) {
+			for (ShoppingCart shopGood : shopGoods) {
+				// 遍历从购物车中选中的商品信息
+				List<Goods> goods = shopGood.getGoodList();
+				int quantity = shopGood.getQuantity();
+				// 计算商品总价
+				for (Goods good : goods) {
+					total = total + good.getPrice() * quantity;
+					// 结果保留两位小数
+					String totalResult = String.format("%.2f", total);
+					map.put("goodInfo", goods);
+					map.put("total", totalResult);
+				}
+			}
+
+		} else {
+			map.put("resultCode", ConstantData.STATUS_CODE_2);
+		}
+
+		return map;
+	}
+
+}
